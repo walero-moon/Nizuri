@@ -1,2 +1,2 @@
 # nizuri
-Disacord.js bot
+Discord.js bot
