@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2"
+  }
+}
