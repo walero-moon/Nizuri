@@ -7,16 +7,21 @@ module.exports = {
     guildOnly: false,
 	cooldown: 5,
     execute(message, args) {
-        console.log('Avatar ran')
-        console.log(!args.length)
-        console.log(message.author.username)
         if (!args.length) {
             const avatar: string = message.author.displayAvatarURL({ format: 'png', dynamic: true });
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
                 .setTitle(`${message.author.tag}`)
                 .setDescription(`${message.author}'s Avatar`)
                 .setImage(avatar)
-            message.channel.send(embed)
+            return message.channel.send(embed)
         }
+
+        const avatar: string = message.mentions.users.first().displayAvatarURL({ format: 'png', dynamic: true})
+        const user: Discord.User = message.mentions.users.first()
+        const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+            .setTitle(`${user.tag}`)
+            .setDescription(`${user}'s Avatar`)
+            .setImage(avatar)
+        return message.channel.send(embed)
 	},
 };
