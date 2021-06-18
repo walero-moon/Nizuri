@@ -15,6 +15,7 @@
         "./commands",
         "commands/**/**/*",
         "./commands/",
-        "discord.d.ts"
+        "discord.d.ts",
+        "./events"
     ]
 }

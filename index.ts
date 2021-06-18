@@ -5,6 +5,22 @@ import { prefix, token } from './config.json';
 import * as Discord from 'discord.js'
 
 const client: Discord.Client = new Discord.Client();
+
+// Dynamically retrieve event files
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+	import(`./events/${file}`)
+        .then((event) => {
+            if (event.once) {
+                client.once(event.name, (...args) => event.execute(...args, client));
+            } else {
+                client.on(event.name, (...args) => event.execute(...args, client));
+            }
+            console.log(`Loaded ${file}`)
+        }
+    )
+}
+
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
@@ -20,13 +36,6 @@ for (const folder of commandFolders) {
       console.log(`\tLoaded ${file}`)
   }
 }
-
-
-// On ready do this
-client.once('ready', () => {
-	console.log('\nNizuri is ready!');
-});
-
 
 client.on('message', (message) => {
     // Check if message starts with the prefix or if it isn't a bot

@@ -14,7 +14,23 @@ declare module "discord.js" {
         usage: string,
         guildOnly: boolean,
         cooldown: number,
-        permissions: string,
+        permissions: any,
         execute: (message: Message, args: string[]) => any // Can be `Promise<SomeType>` if using async
+    }
+
+    export interface Message {
+        channel: TextChannel | DMChannel | NewsChannel
+    }
+
+    export interface GuildChannel {
+        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+    }
+
+    export interface DMChannel {
+        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+    }
+
+    export interface NewsChannel {
+        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
     }
 }

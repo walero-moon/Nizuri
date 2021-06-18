@@ -5,6 +5,19 @@ const fs = require("fs");
 const config_json_1 = require("./config.json");
 const Discord = require("discord.js");
 const client = new Discord.Client();
+// Dynamically retrieve event files
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+    Promise.resolve().then(() => require(`./events/${file}`)).then((event) => {
+        if (event.once) {
+            client.once(event.name, (...args) => event.execute(...args, client));
+        }
+        else {
+            client.on(event.name, (...args) => event.execute(...args, client));
+        }
+        console.log(`Loaded ${file}`);
+    });
+}
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 // Loop through commands folder and load different commands
@@ -17,10 +30,6 @@ for (const folder of commandFolders) {
         console.log(`\tLoaded ${file}`);
     }
 }
-// On ready do this
-client.once('ready', () => {
-    console.log('\nNizuri is ready!');
-});
 client.on('message', (message) => {
     // Check if message starts with the prefix or if it isn't a bot
     if (!message.content.startsWith(config_json_1.prefix) || message.author.bot)
