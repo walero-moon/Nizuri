@@ -2,7 +2,8 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "node index.js"
+    "watch": "tsc -w -p .",
+    "start": "cd dist & nodemon ./index.js"
   },
   "dependencies": {
     "discord.js": "^12.5.3"

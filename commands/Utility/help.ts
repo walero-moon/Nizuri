@@ -1,13 +1,14 @@
-const { prefix } = require('../../config.json');
+import { prefix } from '../../config.json'
 
 module.exports = {
 	name: 'help',
 	description: 'List all of my commands or info about a specific command.',
 	aliases: ['commands'],
 	usage: '[command name]',
+    guildOnly: false,
 	cooldown: 5,
 	execute(message, args) {
-		const data = [];
+		const data: any[] = [];
     const { commands } = message.client;
 
     if (!args.length) {
@@ -26,7 +27,7 @@ module.exports = {
         });
     }
 
-    const name = args[0].toLowerCase();
+    const name: string[] = args[0].toLowerCase();
     const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
     if (!command) {
