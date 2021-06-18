@@ -14,6 +14,7 @@ declare module "discord.js" {
         usage: string,
         guildOnly: boolean,
         cooldown: number,
+        permissions: string,
         execute: (message: Message, args: string[]) => any // Can be `Promise<SomeType>` if using async
     }
 }

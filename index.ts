@@ -1,3 +1,5 @@
+// All this code was literally taken from https://discordjs.guide/
+
 import * as fs from 'fs';
 import { prefix, token } from './config.json';
 import * as Discord from 'discord.js'
@@ -42,6 +44,14 @@ client.on('message', (message) => {
     // Check if command is guildOnly
     if (command.guildOnly && message.channel.type === 'dm') {
         return message.reply('I can\'t execute that command inside DMs!');
+    }
+
+    // Checks if user has permission to use command
+    if (command.permissions) {
+        const authorPerms = message.channel.permissionsFor(message.author);
+        if (!authorPerms || !authorPerms.has(command.permissions)) {
+            return message.reply('You can not do this!');
+        }
     }
 
     // Check if command needs args and if the user passed arguments
