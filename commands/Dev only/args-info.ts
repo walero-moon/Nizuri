@@ -4,6 +4,7 @@ module.exports = {
     args: true,
     aliases: ['args'],
     guildOnly: false,
+    category: 'Dev Only',
     usage: '<arg1> <arg2>...<arg n>',
 	execute(message, args) {
 		if (args[0] === 'foo') {

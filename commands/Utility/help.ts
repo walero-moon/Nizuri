@@ -1,4 +1,5 @@
-import { prefix } from '../../config.json'
+import { prefix } from '../../config.json';
+import * as Discord from 'discord.js';
 
 module.exports = {
 	name: 'help',
@@ -6,40 +7,61 @@ module.exports = {
 	aliases: ['commands'],
 	usage: '[command name]',
     guildOnly: false,
+    category: 'Utility',
 	cooldown: 5,
 	execute(message, args) {
-		const data: any[] = [];
-    const { commands } = message.client;
+		const msg: Discord.MessageEmbed = new Discord.MessageEmbed();
+        let { commands } = message.client;
+        const categories: any = {};
+        msg.setTitle(":question:  Commands");
+        
+        if (!args.length) {
+            for (let command of commands){
+                command = command[1];
+                if (!(command.category in categories)) {
+                    categories[command.category] = [command.name];
+                } else {
+                    categories[command.category].push(command.name);
+                }
+            }
+            msg.setDescription("\`\`\`,help [command]\`\`\`")
+            for (const [key, value] of Object.entries(categories)) {
+                msg.addField(key, value, true);
+            }
 
-    if (!args.length) {
-      data.push('Here\'s a list of all my commands:');
-      data.push(commands.map(command => command.name).join('\n'));
-      data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
 
-      return message.author.send(data, { split: true })
-        .then(() => {
-          if (message.channel.type === 'dm') return;
-          message.reply('I\'ve sent you a DM with all my commands!');
-        })
-        .catch(error => {
-          console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-          message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
-        });
-    }
+            return message.author.send(msg)
+            .then(() => {
+                if (message.channel.type === 'dm') return;
+                message.reply('I\'ve sent you a DM with all my commands!');
+            })
+            .catch(error => {
+                console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+                message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
+            });
+        }
 
-    const name: string[] = args[0].toLowerCase();
-    const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+        const name: string[] = args[0].toLowerCase();
+        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
-    if (!command) {
-      return message.reply('that\'s not a valid command!');
-    }
+        if (!command) {
+            return message.reply('that\'s not a valid command!');
+        }
 
-    data.push(`**Name:** ${command.name}`);
+        msg.setTitle(`:question:  \`${command.name}\` command information`);
+        const cmdUsage = `\`\`\`,${command.name} ${(command.usage) ? command.usage : ''}\`\`\``
+        msg.setDescription(`
+        ${command.description}
+        ${cmdUsage}
+        **You can also say** \`${command.aliases.join(', ')}\`
+        `);
+        if (command.category) msg.addField('Category', command.category, true)
+        if (command.category) msg.addField('Cooldown', `${command.cooldown} seconds`, true)
 
-    if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-    if (command.description) data.push(`**Description:** ${command.description}`);
-    if (command.usage) data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
+        // if (command.aliases) msg.push(`**Aliases:** ${command.aliases.join(', ')}`);
+        // if (command.description) msg.push(`**Description:** ${command.description}`);
+        // if (command.usage) msg.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
 
-    message.channel.send(data, { split: true });
-	},
+        message.channel.send(msg);
+    },
 };

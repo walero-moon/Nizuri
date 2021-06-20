@@ -3,6 +3,7 @@ module.exports = {
 	description: 'Tests bot latency',
 	aliases: ['latency', 'lag'],
     guildOnly: false,
+    category: "Utility",
 	cooldown: 5,
     execute(message, args) {
         const api = Math.round(message.client.ws.ping)

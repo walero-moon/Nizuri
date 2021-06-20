@@ -5,6 +5,8 @@ module.exports = {
 	description: 'Gets a user\'s avatar or your own if no user is given.',
 	aliases: ['icon', 'pfp'],
     guildOnly: false,
+    category: "Utility",
+    usage: "[User]",
 	cooldown: 5,
     execute(message, args) {
         if (!args.length) {
