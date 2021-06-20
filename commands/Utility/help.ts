@@ -50,17 +50,9 @@ module.exports = {
 
         msg.setTitle(`:question:  \`${command.name}\` command information`);
         const cmdUsage = `\`\`\`,${command.name} ${(command.usage) ? command.usage : ''}\`\`\``
-        msg.setDescription(`
-        ${command.description}
-        ${cmdUsage}
-        **You can also say** \`${command.aliases.join(', ')}\`
-        `);
+        msg.setDescription(`${command.description}\n${cmdUsage}\n**You can also say** \`${command.aliases.join(', ')}\``);
         if (command.category) msg.addField('Category', command.category, true)
         if (command.category) msg.addField('Cooldown', `${command.cooldown} seconds`, true)
-
-        // if (command.aliases) msg.push(`**Aliases:** ${command.aliases.join(', ')}`);
-        // if (command.description) msg.push(`**Description:** ${command.description}`);
-        // if (command.usage) msg.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
 
         message.channel.send(msg);
     },

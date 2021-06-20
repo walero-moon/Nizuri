@@ -8,7 +8,7 @@ module.exports = {
     category: "Utility",
     usage: "[User]",
 	cooldown: 5,
-    execute(message, args) {
+    execute(message: Discord.Message, args) {
         if (!args.length) {
             const avatar: string = message.author.displayAvatarURL({ format: 'png', dynamic: true });
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
