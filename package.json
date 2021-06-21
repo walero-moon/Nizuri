@@ -6,7 +6,9 @@
     "start": "cd dist & nodemon ./index.js"
   },
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "@types/js-quantities": "^1.6.2",
+    "discord.js": "^12.5.3",
+    "js-quantities": "^1.7.6"
   },
   "devDependencies": {
     "@types/node": "^15.12.2"
