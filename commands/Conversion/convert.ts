@@ -22,10 +22,10 @@ module.exports = {
 
         let from: any = args[0].toLowerCase()
         // Checks to see if it's temperature
-        if (from.includes('c') || from.includes('f')) {
-            const fromUnit: string = from.slice(-1).toUpperCase()
-            const fromAmount: string = from.slice(0, -1)
-            from = fromAmount + 'temp' + fromUnit
+        let fromValue = from.match(/\d+/)[0]
+        let fromUnit = from.match(/[a-zA-Z]/g).join()
+        if (fromUnit === 'c' || fromUnit === 'f') {
+            from = fromValue + 'temp' + fromUnit.toUpperCase()
         }
 
         from = Qty.parse(from);
