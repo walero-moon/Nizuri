@@ -33,4 +33,11 @@ Returns information about a user, such as account creation date, ID and custom s
 
 <br/>
 
+```,convert <10m> <ft>```
 
+Converts the given value and its unit to the desired unit. Works to convert from different units.
+> System conversion   |  Temperature conversion
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/122831898-edcb2780-d2c0-11eb-8a1e-3dfb56044818.png) | ![image](https://user-images.githubusercontent.com/61264517/122831946-020f2480-d2c1-11eb-847d-e2d3879ac92e.png)
+
+<br/>
