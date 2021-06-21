@@ -6,12 +6,13 @@ module.exports = {
 	aliases: ['icon', 'pfp'],
     guildOnly: false,
     category: "Utility",
-    usage: "[User]",
+    usage: "<@User>",
 	cooldown: 5,
     execute(message: Discord.Message, args) {
         if (!args.length) {
             const avatar: string = message.author.displayAvatarURL({ format: 'png', dynamic: true });
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+                .setColor('#0095ff')
                 .setTitle(`${message.author.tag}`)
                 .setDescription(`${message.author}'s Avatar`)
                 .setImage(avatar)
@@ -21,6 +22,7 @@ module.exports = {
         const avatar: string = message.mentions.users.first().displayAvatarURL({ format: 'png', dynamic: true})
         const user: Discord.User = message.mentions.users.first()
         const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+            .setColor('#0095ff')
             .setTitle(`${user.tag}`)
             .setDescription(`${user}'s Avatar`)
             .setImage(avatar)

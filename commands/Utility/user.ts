@@ -4,6 +4,7 @@ const createEmbed = (message: Discord.Message, user: Discord.User, ) => {
     const avatar: string = user.displayAvatarURL({ format: 'png', dynamic: true });
     const createdAt: string = user.createdAt.toUTCString().slice(0, -3)
     const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+    .setColor('#00ff1e')
         .setAuthor(user.tag, avatar, avatar)
         .setDescription(user)
         .setThumbnail(avatar)
@@ -34,7 +35,7 @@ module.exports = {
 	aliases: ['user-info', 'info-user', 'userinfo'],
     guildOnly: false,
     category: "Utility",
-    usage: "@User",
+    usage: "<@User>",
 	cooldown: 5,
     async execute(message: Discord.Message, args) {
         // Get yourself if no arguments
