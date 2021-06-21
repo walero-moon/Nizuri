@@ -15,10 +15,10 @@ const createEmbed = (message: Discord.Message, user: Discord.User, ) => {
         if (user.presence.activities[0]) {
             embed.addField("Status", user.presence.activities[0].state)
         } else {
-            embed.addField('\u200B', '\u200B')
+            embed.addField('Status', 'No status')
         }
 
-    if (message.member !== null) {
+    if (message.member !== null && message.guild.member(user.id)) {
         const joinedAt: string = message.member.joinedAt.toUTCString().slice(0, -3)
         const roles = message.member.roles.cache.map(role => role.toString())
         roles.splice(-1)
@@ -34,12 +34,26 @@ module.exports = {
 	aliases: ['user-info', 'info-user', 'userinfo'],
     guildOnly: false,
     category: "Utility",
-    usage: "[User]",
+    usage: "@User",
 	cooldown: 5,
-    execute(message: Discord.Message, args) {
+    async execute(message: Discord.Message, args) {
+        // Get yourself if no arguments
         if (!args.length) return message.channel.send(createEmbed(message, message.author))
 
-        const user: Discord.User = message.mentions.users.first()
-        return message.channel.send(createEmbed(message, user))
+        // Get mentioned user if any
+        let user: any = message.mentions.users.first()
+        if (user) return message.channel.send(createEmbed(message, user))
+
+        // Tries to find user with name that matches the argument
+        user = message.client.users.cache.find(user => user.username == args[0])
+        if (user) return message.channel.send(createEmbed(message, user))
+
+        // Gets user based on ID
+        try {
+            user = await message.client.users.fetch(args[0])
+            return message.channel.send(createEmbed(message, user))
+        } catch {
+            return message.channel.send(`Usage: \`,user ${this.usage}\``)
+        }
 	},
 };
