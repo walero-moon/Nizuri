@@ -7,7 +7,7 @@ module.exports = {
     args: true,
 	aliases: ['unit'],
     guildOnly: false,
-    category: "Utility",
+    category: "Conversion",
     usage: "<10m> <ft>",
 	cooldown: 1,
     execute(message: Discord.Message, args) {

@@ -7,7 +7,7 @@ module.exports = {
 	aliases: ['commands'],
 	usage: '<command name>',
     guildOnly: false,
-    category: 'Utility',
+    category: "Misc",
 	cooldown: 5,
 	execute(message, args) {
 		const msg: Discord.MessageEmbed = new Discord.MessageEmbed();
@@ -19,16 +19,22 @@ module.exports = {
             for (let command of commands){
                 command = command[1];
                 if (!(command.category in categories)) {
-                    categories[command.category] = [command.name];
-                } else {
-                    categories[command.category].push(command.name);
+                    if (command.category !== "Dev Only") categories[command.category] = [{name: command.name, desc: command.description}];
+                } else if (command.category !== "Dev Only") {
+                    categories[command.category].push({name: command.name, desc: command.description});
                 }
             }
-            msg.setDescription("\`\`\`,help [command]\`\`\`")
-            for (const [key, value] of Object.entries(categories)) {
-                msg.addField(key, value, true);
+            msg.setDescription("\`\`\`,help [command]\`\`\`");
+            // For category
+            for (let [key, value] of Object.entries(categories)) {
+                console.log(categories);
+                let cmd = categories[key];
+                let line = '';
+                cmd.forEach((item) => {
+                    line += `**\`${item.name}\`** - ${item.desc}\n`;
+                })
+                msg.addField(key, line);
             }
-
 
             return message.author.send(msg)
             .then(() => {
@@ -36,7 +42,7 @@ module.exports = {
                 message.reply('I\'ve sent you a DM with all my commands!');
             })
             .catch(error => {
-                console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+                console.error(`Could not send help DM to ${message.author.tag}.\n\n`, error);
                 message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
             });
         }
