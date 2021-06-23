@@ -45,9 +45,10 @@ module.exports = {
             const equation: string = args.join(' ');
             total = eval(equation);
             finalEquation += ` | ${equation} = ${total}`
+            embed.setTitle(total)
             embed.addFields(
                 { name: "Dice sum", value: diceEquation, inline: true},
-                { name: "Total", value: equation, inline: true}
+                { name: "Total", value: `${equation} = ${total}`, inline: true}
             )
         }
         
