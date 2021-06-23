@@ -22,8 +22,8 @@ module.exports = {
                 .setDescription(`\`${this.usage}\`\n\n**Parameters inside [ ] are optional.**`)
                 .addFields(
                     { name: 'Example 1', value: '\`,r d20\`', inline: true},
-                    { name: 'Example 2', value: '\`,r d20 + 6\`', inline: true},
-                    { name: 'Example 3', value: '\`,r 2d20\`', inline: true},
+                    { name: 'Example 2', value: '\`,r d8 + 6\`', inline: true},
+                    { name: 'Example 3', value: '\`,r 2d10\`', inline: true},
                     { name: 'Example 4', value: '\`,r 3d20 + 3\`', inline: true},
                 )
             return message.channel.send(embed)
