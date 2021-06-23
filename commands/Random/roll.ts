@@ -19,7 +19,7 @@ module.exports = {
                 .setColor('#ff2424')
                 .setTitle('Invalid usage')
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
-                .setDescription(`\`${this.usage}\`\n\n**Parameters inside [ ] are optional.**`)
+                .setDescription(`\`${this.usage}\`\n**Parameters inside [ ] are optional.**\n`)
                 .addFields(
                     { name: 'Example 1', value: '\`,r d20\`', inline: true},
                     { name: 'Example 2', value: '\`,r d8 + 6\`', inline: true},
