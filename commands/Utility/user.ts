@@ -20,8 +20,9 @@ const createEmbed = (message: Discord.Message, user: Discord.User, ) => {
         }
 
     if (message.member !== null && message.guild.member(user.id)) {
-        const joinedAt: string = message.member.joinedAt.toUTCString().slice(0, -3)
-        const roles = message.member.roles.cache.map(role => role.toString())
+        const member = message.guild.member(user.id)
+        const joinedAt: string = member.joinedAt.toUTCString().slice(0, -3)
+        const roles = member.roles.cache.map(role => role.toString())
         roles.splice(-1)
         embed.addField(`Roles [${roles.length}]`, roles.join(' '), true)
         embed.addField("Joined server on", joinedAt, true)

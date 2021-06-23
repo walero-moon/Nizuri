@@ -17,11 +17,11 @@ module.exports = {
                 action: 'query',
                 list: 'search',
                 inprop: 'url',
-                utf8: '',
+                utf8: 'true',
                 format: 'json',
                 origin: '*',
                 srlimit: '20',
-                srsearch: args[0]
+                srsearch: args.join('_')
             })
         const response = await fetch(search)
         console.log
@@ -58,10 +58,11 @@ module.exports = {
         const images = await fetch(pageImages)
         const ijson = await images.json()
         const image = ijson.query.pages[Object.keys(ijson.query.pages)].thumbnail
+        const url = `https://en.wikipedia.org/wiki/${json.query.search[0].title.replace(/ /g, '_')}`
 
         const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setTitle(json.query.search[0].title)
-            .setURL(`https://en.wikipedia.org/wiki/${json.query.search[0].title.replace(' ', '_')}`)
+            .setURL(url)
             .setFooter('From Wikipedia, the free encyclopedia')
             .setDescription(summary)
         if (image) embed.setThumbnail(image.source)
