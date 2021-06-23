@@ -27,7 +27,6 @@ module.exports = {
             msg.setDescription("\`\`\`,help [command]\`\`\`");
             // For category
             for (let [key, value] of Object.entries(categories)) {
-                console.log(categories);
                 let cmd = categories[key];
                 let line = '';
                 cmd.forEach((item) => {
