@@ -8,7 +8,8 @@
   "dependencies": {
     "@types/js-quantities": "^1.6.2",
     "discord.js": "^12.5.3",
-    "js-quantities": "^1.7.6"
+    "js-quantities": "^1.7.6",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^15.12.2"
