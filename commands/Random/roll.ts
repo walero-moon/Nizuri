@@ -8,7 +8,7 @@ module.exports = {
     args: true,
     guildOnly: false,
     category: "Random",
-    usage: "<dice amount>d<dice size> [<operation> <number>]",
+    usage: "[<dice amount>]d<dice size> [<operation> <number>]",
 	cooldown: 0.05,
     execute(message: Discord.Message, args) {
         const dices: any[] = args[0].split('d');
