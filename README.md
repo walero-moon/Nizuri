@@ -41,3 +41,13 @@ Converts the given value and its unit to the desired unit. Works to convert from
 > ![image](https://user-images.githubusercontent.com/61264517/122831898-edcb2780-d2c0-11eb-8a1e-3dfb56044818.png) | ![image](https://user-images.githubusercontent.com/61264517/122831946-020f2480-d2c1-11eb-847d-e2d3879ac92e.png)
 
 <br/>
+
+```,r <dice amount>d<dice size> [<operation> <number>]```
+
+Rolls the desired amount of die and then performs the appropriate calculations.
+> Example Wrong usage   |  Correct usage
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/123117050-cd61b100-d417-11eb-8983-1625518219a5.png) | ![image](https://user-images.githubusercontent.com/61264517/123116623-7065fb00-d417-11eb-94a5-c3270abb8408.png)
+
+
+<br/>
