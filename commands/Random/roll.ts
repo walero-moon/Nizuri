@@ -1,5 +1,6 @@
 import * as Discord from 'discord.js';
 import * as Dice from './libFiles/dice';
+import { errColour } from '../../config.json'
 
 module.exports = {
 	name: 'roll',
@@ -16,7 +17,7 @@ module.exports = {
         // Catch invalid usage
         if (dices.length === 1 || (args[1] && !args[2])) {
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-                .setColor('#ff2424')
+                .setColor(errColour)
                 .setTitle('Invalid usage')
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
                 .setDescription(`\`${this.usage}\`\n**Parameters inside [ ] are optional.**\n`)

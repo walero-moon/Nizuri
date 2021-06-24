@@ -65,13 +65,16 @@ client.on('message', (message) => {
 
     // Check if command needs args and if the user passed arguments
     if (command.args && !args.length) {
-        let reply: string = `You didn't provide any arguments, ${message.author}!`
+        const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+            .setAuthor(message.author.tag, message.author.displayAvatarURL())
+            .setTitle('Missing arguments for command')
+            .setColor('#ff2424')
 
         // Checks if proper usage exists, if it does, add the proper usage to the reply
         if (command.usage) {
-            reply += `\nUsage: \`${prefix}${command.name} ${command.usage}\``
+            embed.setDescription(`\nUsage: \`${prefix}${command.name} ${command.usage}\``)
         }
-        return message.channel.send(reply)
+        return message.channel.send(embed)
     }
 
     // Takes care of command cooldown

@@ -1,5 +1,6 @@
 import * as Discord from 'discord.js'
 import * as Qty from 'js-quantities'
+import { errColour, successColour } from '../../config.json'
 
 module.exports = {
 	name: 'convert',
@@ -13,7 +14,7 @@ module.exports = {
     execute(message: Discord.Message, args) {
         if (args.length < 2) {
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-                .setColor('#ff2424')
+                .setColor(errColour)
                 .setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
                 .setTitle(`Missing arguments`)
                 .setDescription(`**Usage: \`,convert ${this.usage}\`**`)
@@ -31,7 +32,7 @@ module.exports = {
         from = Qty.parse(from);
         if (!from) {
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-                .setColor('#ff2424')
+                .setColor(errColour)
                 .setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
                 .setTitle(`Invalid first argument`)
                 .setDescription(`**Usage: \`,convert ${this.usage}\`**`)
@@ -56,13 +57,13 @@ module.exports = {
             }
 
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-                .setColor('#5cff5f')
+                .setColor(successColour)
                 .setTitle(`${from} is ${result}`)
             return message.channel.send(embed);
 
         } catch (err) {
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-                .setColor('#ff2424')
+                .setColor(errColour)
                 .setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
                 .setTitle(`Cannot convert ${from} to ${to}.`)
                 .setDescription(`**Please use valid units.**\n Usage: \`,convert ${this.usage}\``)

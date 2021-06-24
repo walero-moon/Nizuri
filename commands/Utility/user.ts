@@ -1,10 +1,11 @@
 import * as Discord from 'discord.js'
+import { errColour, successColour } from '../../config.json'
 
 const createEmbed = (message: Discord.Message, user: Discord.User, ) => {
     const avatar: string = user.displayAvatarURL({ format: 'png', dynamic: true });
     const createdAt: string = user.createdAt.toUTCString().slice(0, -3)
     const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
-    .setColor('#00ff1e')
+        .setColor(successColour)
         .setAuthor(user.tag, avatar, avatar)
         .setDescription(user)
         .setThumbnail(avatar)
@@ -47,15 +48,25 @@ module.exports = {
         if (user) return message.channel.send(createEmbed(message, user))
 
         // Tries to find user with name that matches the argument
-        user = message.client.users.cache.find(user => user.username == args[0])
+        user = message.client.users.cache.find(user => user.username == args.join(' '))
+        if (user) return message.channel.send(createEmbed(message, user))
+
+        // Tries to find user with server nickname
+        user = await message.guild.members.fetch()
+        user = await user.find((member) => member.nickname == args.join(' ')).user
         if (user) return message.channel.send(createEmbed(message, user))
 
         // Gets user based on ID
         try {
-            user = await message.client.users.fetch(args[0])
+            user = await message.client.users.fetch(args.join(' '))
             return message.channel.send(createEmbed(message, user))
-        } catch {
-            return message.channel.send(`Usage: \`,user ${this.usage}\``)
+        } catch (err){
+            console.log(err)
+            const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+                .setTitle('Couldn\'t find user')
+                .setColor(errColour)
+                .setDescription(`Usage: \`,user ${this.usage}\``)
+            return message.channel.send(embed)
         }
 	},
 };
