@@ -52,16 +52,17 @@ module.exports = {
         if (user) return message.channel.send(createEmbed(message, user))
 
         // Tries to find user with server nickname
-        user = await message.guild.members.fetch()
-        user = await user.find((member) => member.nickname == args.join(' ')).user
-        if (user) return message.channel.send(createEmbed(message, user))
+        try {
+            user = await message.guild.members.fetch()
+            user = await user.find((member) => member.nickname == args.join(' ')).user
+            if (user) return message.channel.send(createEmbed(message, user))
+        } catch {}
 
         // Gets user based on ID
         try {
             user = await message.client.users.fetch(args.join(' '))
             return message.channel.send(createEmbed(message, user))
         } catch (err){
-            console.log(err)
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
                 .setTitle('Couldn\'t find user')
                 .setColor(errColour)
