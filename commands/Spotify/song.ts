@@ -4,11 +4,11 @@ const SpotifyWebApi = require('spotify-web-api-node')
 
 import { Menu } from 'discord.js-menu'
 import { Track, Search, Album, Artist } from 'spotify-web-api-node';
-import { errColour, successColour } from '../../config.json';
+import { clientID, clientSecret, errColour, successColour } from '../../config.json';
 import { generateSongSearchMenu } from './lib/menu'
 const spotifyApi = new SpotifyWebApi({
-    clientId: '4c97a767dfef4d8995b21674541ae6de',
-    clientSecret: '9fda595e33ac42248c9ed0547f496d6d',
+    clientId: clientID,
+    clientSecret: clientSecret,
 });
 
 // Retrieve an access token
