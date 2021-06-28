@@ -49,5 +49,20 @@ Rolls the desired amount of die and then performs the appropriate calculations.
 > :------------------:|:--------------------:
 > ![image](https://user-images.githubusercontent.com/61264517/123117050-cd61b100-d417-11eb-8983-1625518219a5.png) | ![image](https://user-images.githubusercontent.com/61264517/123116623-7065fb00-d417-11eb-94a5-c3270abb8408.png)
 
+<br/>
+
+```,wiki <query>```
+
+Searches Wikipedia for an article and returns a 3 sentence summary.
+> ![image](https://user-images.githubusercontent.com/61264517/123693997-1e661080-d82f-11eb-9916-a3b578b5bcc6.png)
+
+<br/>
+
+```,image <query>```
+
+Searches for images and returns a reaction meny with the different images..
+> Page 1   |  Page 6
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/123694285-83ba0180-d82f-11eb-919f-69b85862fbe6.png) | ![image](https://user-images.githubusercontent.com/61264517/123694195-62f1ac00-d82f-11eb-84cc-8bddfe371f8e.png)
 
 <br/>
