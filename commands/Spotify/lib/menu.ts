@@ -1,11 +1,28 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Search } from 'spotify-web-api-node'
 import { Menu } from 'discord.js-menu'
+import { createSongEmbed } from './embed'
 
 const menuButtons = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
 const generatePagesFromTracks = (pages, message: Message, args) => {
     return pages.map((page, i: number) => {
+        let fields = page.tracks.map((track, trackId) => {
+            return {
+                name: menuButtons[trackId + 1],
+                value: `${track.name} by ${track.artists[0].name} - ${track.album.name}`,
+                inline: false
+            }
+        })
+        fields.push([{
+            name: '⬅️',
+            value: 'Prev Page',
+            inline: true
+        }, {
+            name:'➡️',
+            value: 'Next Page',
+            inline: true
+        }])
         return {
             tracks: page.tracks,
             page: {
@@ -13,32 +30,26 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                 content: new MessageEmbed({
                     title: "Page #" + String(i + 1),
                     description: `Search results for: ***${args.join(' ')}***`,
-                    fields: page.tracks.map((track, trackId) => {
-                        return {
-                            name: menuButtons[trackId+1],
-                            value: `${track.name} by ${track.artists[0].name} - ${track.album.name}` ,
-                            inline: false
-                        }
-                    }
-                    )
-                })
-                    .setAuthor(message.author.tag, message.author.displayAvatarURL()),
-                    
+                    fields: fields
+                }),
                 reactions: {
-                    '1️⃣': 'extra',
-                    '2️⃣': 'extra',
-                    '3️⃣': 'extra',
-                    '4️⃣': 'extra',
-                    '5️⃣': 'extra',
-                    '⬅️' : 'previous',
-                    '➡️' : 'next',
-                    '😀': async () => {
-                        // You can run whatever you like in functions.
-                        let res = await message.channel.send("Hey-")
-                        setTimeout(() => {
-                            return res.edit("listen!")
-                        }, 1000)
-                    }
+                    '1️⃣': async () => {
+                        return message.channel.send(createSongEmbed(page.tracks[0], message))
+                    },
+                    '2️⃣': async () => {
+                        return message.channel.send(createSongEmbed(page.tracks[1], message))
+                    },
+                    '3️⃣': async () => {
+                        return message.channel.send(createSongEmbed(page.tracks[2], message))
+                    },
+                    '4️⃣': async () => {
+                        return message.channel.send(createSongEmbed(page.tracks[3], message))
+                    },
+                    '5️⃣': async () => {
+                        return message.channel.send(createSongEmbed(page.tracks[4], message))
+                    },
+                    '⬅️': 'previous',
+                    '➡️': 'next',
                 }
             }
 
@@ -54,7 +65,6 @@ const generateSongSearchMenu = (search: Search, size: number, message: Message, 
     }
     //console.log(JSON.stringify(pages))
     pages = generatePagesFromTracks(pages, message, args)
-    console.log(pages)
     return new Menu(message.channel, message.author.id, pages.map(page => page.page))
 }
 export { generateSongSearchMenu, generatePagesFromTracks }
