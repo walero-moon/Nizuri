@@ -31,7 +31,7 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                     title: "Page #" + String(i + 1),
                     description: `Search results for: ***${args.join(' ')}***`,
                     fields: fields
-                }),
+                }).setAuthor(message.author.tag, message.author.displayAvatarURL()),
                 reactions: {
                     '1️⃣': async () => {
                         return message.channel.send(createSongEmbed(page.tracks[0], message))
