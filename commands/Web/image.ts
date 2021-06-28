@@ -12,7 +12,7 @@ module.exports = {
 	description: 'Searches for images on the internet.',
     aliases: ['im'],
     args: true,
-    guildOnly: false,
+    guildOnly: true,
     category: "Web",
     usage: "<Query>",
 	cooldown: 10,
@@ -44,13 +44,13 @@ module.exports = {
                         .setURL(image.hostPageUrl)
                     embeds.push(embed);
                 })
-                pagination(message, embeds, emoji, timeout)
+                return pagination(message, embeds, emoji, timeout)
             } else {
                 const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
                     .setAuthor(message.author.tag, message.author.displayAvatarURL())
                     .setTitle(`Could not find results for "${query}"`)
                     .setColor(errColour)
-                message.channel.send(embed)
+                return message.channel.send(embed)
             }
         });
 	},

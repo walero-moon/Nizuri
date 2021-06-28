@@ -101,7 +101,9 @@ client.on('message', (message) => {
 
     // Executes command, duh
     try {
+        message.channel.startTyping()
         command.execute(message, args);
+        message.channel.stopTyping()
     } catch (error) {
         console.log(error);
     }
