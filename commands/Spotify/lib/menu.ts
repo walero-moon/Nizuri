@@ -12,7 +12,7 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                 name: String(i + 1),
                 content: new MessageEmbed({
                     title: "Page #" + String(i + 1),
-                    description: `***${message.author.username}*** searched for: ***${args.join(' ')}***`,
+                    description: `Search results for: ***${args.join(' ')}***`,
                     fields: page.tracks.map((track, trackId) => {
                         return {
                             name: menuButtons[trackId+1],
@@ -21,7 +21,9 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                         }
                     }
                     )
-                }),
+                })
+                    .setAuthor(message.author.tag, message.author.displayAvatarURL()),
+                    
                 reactions: {
                     '1️⃣': 'extra',
                     '2️⃣': 'extra',
@@ -45,7 +47,7 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
 }
 const generateSongSearchMenu = (search: Search, size: number, message: Message, args) => {
     // create a list of pages, each containing n entries
-    let pages: object[] = []
+    let pages: any = []
     for (let i = 0; i < search.body.tracks.items.length; i += size) {
         let n: number = i / size
         pages[n] = { tracks: search.body.tracks.items.slice(i, i + size) }

@@ -34,6 +34,7 @@ module.exports = {
                 return message.channel.send(error)
             }
             const json = await response.json()
+            console.log(json.query.search)
     
             if (!json.query.search[0]) {
                 const error: Discord.MessageEmbed = new Discord.MessageEmbed()
@@ -82,6 +83,7 @@ module.exports = {
                     .setDescription(err)
                     .setColor(errColour)
                     .setFooter('Use [,user 192358823174864896] to get the developer\'s Discord')
+            console.log(err)
             return message.channel.send(error)
         }
 	},
