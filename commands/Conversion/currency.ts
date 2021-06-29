@@ -30,6 +30,8 @@ const makeEmbed = (message: Discord.Message, fromCurrency: string, fromValue: st
     }
     embed.setDescription(`1 ${fromCurrency} = ${value} ${toCurrency}`)
     embed.setFooter('Values updated every hour. Not live exchange.')
+    embed.setColor(successColour)
+    embed.setTimestamp()
     return embed
 }
 
