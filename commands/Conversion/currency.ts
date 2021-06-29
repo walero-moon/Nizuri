@@ -40,7 +40,7 @@ module.exports = {
 	aliases: ['coin', 'money', 'currency', 'ex'],
     guildOnly: false,
     category: "Conversion",
-    usage: "<amount><from currency> <to currency>",
+    usage: "[<amount>]<from currency> <to currency>",
 	cooldown: 10,
     async execute(message: Discord.Message, args) {
         if (args.length < 2) {

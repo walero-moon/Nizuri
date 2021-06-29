@@ -24,7 +24,7 @@ module.exports = {
                     categories[command.category].push({name: command.name, desc: command.description});
                 }
             }
-            msg.setDescription("\`\`\`,help [command]\`\`\`");
+            msg.setDescription("\`\`\`,help [command]\`\`\`\nArguments inside '[]' are optional.");
             // For category
             for (let [key, value] of Object.entries(categories)) {
                 let cmd = categories[key];
