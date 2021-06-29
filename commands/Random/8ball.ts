@@ -1,6 +1,4 @@
 import * as Discord from 'discord.js';
-import * as Dice from './libFiles/dice';
-import { errColour } from '../../config.json'
 
 const responses: string[] = ['It is certain',
                      'Without a doubt',
