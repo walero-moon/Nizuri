@@ -23,7 +23,8 @@ const makeEmbed = (message: Discord.Message, fromCurrency: string, fromValue: st
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
 
     if (fromValue) {
-        const converted: number = Number(fromValue) * value
+        let converted: number = (Number(fromValue) * value)
+        converted = Math.round((converted + Number.EPSILON) * 100) / 100
         embed.setTitle(`${converted} ${toCurrency}`)
     } else {
         embed.setTitle(`${value} ${toCurrency}`)
