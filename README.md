@@ -64,9 +64,18 @@ Searches Wikipedia for an article and returns a 3 sentence summary.
 
 ```,image <query>```
 
-Searches for images and returns a reaction meny with the different images..
+Searches for images and returns a reaction meny with the different images.
 > Page 1   |  Page 6
 > :------------------:|:--------------------:
 > ![image](https://user-images.githubusercontent.com/61264517/123694285-83ba0180-d82f-11eb-919f-69b85862fbe6.png) | ![image](https://user-images.githubusercontent.com/61264517/123694195-62f1ac00-d82f-11eb-84cc-8bddfe371f8e.png)
+
+<br/>
+
+```,exchange [<amount>]<from currency> <to currency>```
+
+Performs currency exchange. If no amount is passed, returns the regular value. Currencies do not need to be in uppercase
+> With amount         |  Without amount
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/123819793-6b4df380-d8d0-11eb-9c52-5f9bee8b5bdd.png) | ![image](https://user-images.githubusercontent.com/61264517/123819845-76088880-d8d0-11eb-8d95-bfedb32bee3e.png)
 
 <br/>
