@@ -10,7 +10,8 @@ create a JSON file named `config.json`, that will contain the token and the pref
     "errColour": "#ff2424",
     "successColour": "#5cff5f",
     "rapidapiKey": "bing image search through RapidAPI", // Required for image command to work
-    "rapidapiHost": "bing image search through RapidAPI" // Required for image command to work
+    "rapidapiHost": "bing image search through RapidAPI", // Required for image command to work
+    "currconv": "free currency conversion api key", // Required for exchange command to work. get key at https://free.currencyconverterapi.com/
 }
 ```
 To compile from TypeScript to javascript, open the root directory and run `tsc -p .` 
