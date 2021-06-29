@@ -14,6 +14,14 @@ module.exports = {
     execute(message: Discord.Message, args) {
         const dices: any[] = args[0].split('d');
 
+        // Catch too many dice
+        if (dices[0] > 200) {
+            const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
+                .setColor(errColour)
+                .setTitle('Too many dice to roll')
+                .setAuthor(message.author.tag, message.author.displayAvatarURL())
+            return message.channel.send(embed)
+        }
         // Catch invalid usage
         if (dices.length === 1 || (args[1] && !args[2])) {
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()

@@ -34,7 +34,6 @@ module.exports = {
                 return message.channel.send(error)
             }
             const json = await response.json()
-            console.log(json.query.search)
     
             if (!json.query.search[0]) {
                 const error: Discord.MessageEmbed = new Discord.MessageEmbed()
