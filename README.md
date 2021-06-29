@@ -21,10 +21,14 @@ If you want it to compile automatically while you edit, run `npm run watch`.
 To start the bot run `npm start`. This will use nodemon to automatically restart the bot after changes are detected.
 
 ## Currently implemented commands
+
+### Utility
 ```,avatar <@user>```
 
 Returns the avatar from the chosen user. If no user is provided, returns your own avatar.
-> ![image](https://user-images.githubusercontent.com/61264517/122698822-7ba20680-d21e-11eb-8d89-4756ec6a79e9.png)
+> No argument         |  Pinging user
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/123861750-ee397300-d8fd-11eb-934c-bb2ed3f5278d.png) | ![image](https://user-images.githubusercontent.com/61264517/123861829-ff827f80-d8fd-11eb-8e83-785755dd1a89.png)
 
 <br/>
 
@@ -34,41 +38,23 @@ Returns information about a user, such as account creation date, ID and custom s
 **Also works if you provide user IDs**
 > Mentioning user     |  Using ID
 > :------------------:|:--------------------:
-> ![image](https://user-images.githubusercontent.com/61264517/122698711-3b428880-d21e-11eb-9c76-f5e78f546f08.png) | ![image](https://user-images.githubusercontent.com/61264517/122698852-93798a80-d21e-11eb-9a50-5342e451c796.png)
+> ![image](https://user-images.githubusercontent.com/61264517/123862022-35276880-d8fe-11eb-8a26-b11931b3dbb6.png) | ![image](https://user-images.githubusercontent.com/61264517/123862047-3ce70d00-d8fe-11eb-88c5-9934f8eaec13.png)
 
 <br/>
+
+```,calc <expression>```
+
+Takes a mathematical expression and returns the answer. You can use "^" or "**" for exponents.
+> ![image](https://user-images.githubusercontent.com/61264517/123863501-1033f500-d900-11eb-9fef-13b2b7461311.png)
+
+### Conversion
 
 ```,convert <10m> <ft>```
 
 Converts the given value and its unit to the desired unit. Works to convert from different units.
 > System conversion   |  Temperature conversion
 > :------------------:|:--------------------:
-> ![image](https://user-images.githubusercontent.com/61264517/122831898-edcb2780-d2c0-11eb-8a1e-3dfb56044818.png) | ![image](https://user-images.githubusercontent.com/61264517/122831946-020f2480-d2c1-11eb-847d-e2d3879ac92e.png)
-
-<br/>
-
-```,r <dice amount>d<dice size> [<operation> <number>]```
-
-Rolls the desired amount of die and then performs the appropriate calculations.
-> Example Wrong usage   |  Correct usage
-> :------------------:|:--------------------:
-> ![image](https://user-images.githubusercontent.com/61264517/123117050-cd61b100-d417-11eb-8983-1625518219a5.png) | ![image](https://user-images.githubusercontent.com/61264517/123116623-7065fb00-d417-11eb-94a5-c3270abb8408.png)
-
-<br/>
-
-```,wiki <query>```
-
-Searches Wikipedia for an article and returns a 3 sentence summary.
-> ![image](https://user-images.githubusercontent.com/61264517/123693997-1e661080-d82f-11eb-9916-a3b578b5bcc6.png)
-
-<br/>
-
-```,image <query>```
-
-Searches for images and returns a reaction meny with the different images.
-> Page 1   |  Page 6
-> :------------------:|:--------------------:
-> ![image](https://user-images.githubusercontent.com/61264517/123694285-83ba0180-d82f-11eb-919f-69b85862fbe6.png) | ![image](https://user-images.githubusercontent.com/61264517/123694195-62f1ac00-d82f-11eb-84cc-8bddfe371f8e.png)
+> ![image](https://user-images.githubusercontent.com/61264517/123862237-7c155e00-d8fe-11eb-9488-9b9808c30ccf.png) | ![image](https://user-images.githubusercontent.com/61264517/123862260-820b3f00-d8fe-11eb-83af-c421808f1892.png)
 
 <br/>
 
@@ -77,6 +63,36 @@ Searches for images and returns a reaction meny with the different images.
 Performs currency exchange. If no amount is passed, returns the regular value. Currencies do not need to be in uppercase
 > With amount         |  Without amount
 > :------------------:|:--------------------:
-> ![image](https://user-images.githubusercontent.com/61264517/123819793-6b4df380-d8d0-11eb-9c52-5f9bee8b5bdd.png) | ![image](https://user-images.githubusercontent.com/61264517/123819845-76088880-d8d0-11eb-8d95-bfedb32bee3e.png)
+> ![image](https://user-images.githubusercontent.com/61264517/123862512-cbf42500-d8fe-11eb-92cb-d5ca4683253a.png) | ![image](https://user-images.githubusercontent.com/61264517/123862528-d2829c80-d8fe-11eb-94ef-3d5cc563b4c3.png)
+
+### Random
+
+```,r <dice amount>d<dice size> [<operation> <number>]```
+
+Rolls the desired amount of die and then performs the appropriate calculations.
+> Example Wrong usage   |  Correct usage
+> :------------------:|:--------------------:
+> ![image](https://user-images.githubusercontent.com/61264517/123863687-48d3ce80-d900-11eb-94f1-408d54fb5b23.png) | ![image](https://user-images.githubusercontent.com/61264517/123863762-5db06200-d900-11eb-99b5-28f7c1b072bd.png)
+
+<br/>
+
+```,8ball <yes or no question>```
+
+Replies to a yes or no question.
+> ![image](https://user-images.githubusercontent.com/61264517/123863141-97cd3400-d8ff-11eb-8cec-d8422467fabb.png)
+
+### Web
+
+```,wiki <query>```
+
+Searches Wikipedia for an article and returns a 3 sentence summary.
+> ![image](https://user-images.githubusercontent.com/61264517/123863923-8cc6d380-d900-11eb-984c-ca49149126ee.png)
+
+<br/>
+
+```,image <query>```
+
+Searches for images and returns a reaction meny with the different images.
+> ![image](https://user-images.githubusercontent.com/61264517/123864141-c5ff4380-d900-11eb-9d6a-7a0ccca6c6ab.png)
 
 <br/>
