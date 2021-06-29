@@ -10,7 +10,7 @@ module.exports = {
 	cooldown: 5,
     execute(message: Discord.Message, args) {
         if (!args.length) {
-            const avatar: string = message.author.displayAvatarURL({ format: 'png', dynamic: true });
+            const avatar: string = message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 4096 });
             const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
                 .setColor('#0095ff')
                 .setTitle(`${message.author.tag}`)
@@ -19,7 +19,7 @@ module.exports = {
             return message.channel.send(embed)
         }
 
-        const avatar: string = message.mentions.users.first().displayAvatarURL({ format: 'png', dynamic: true})
+        const avatar: string = message.mentions.users.first().displayAvatarURL({ format: 'png', dynamic: true, size: 4096})
         const user: Discord.User = message.mentions.users.first()
         const embed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setColor('#0095ff')
