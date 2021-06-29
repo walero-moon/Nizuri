@@ -5,8 +5,12 @@ run `npm install` to install all dependencies
 create a JSON file named `config.json`, that will contain the token and the prefix for your version of the bot.
 ```js
 {
-  "prefix": "<prefix>",
-  "token": "<token>"
+    "prefix": "prefix",
+    "token": "token",
+    "errColour": "#ff2424",
+    "successColour": "#5cff5f",
+    "rapidapiKey": "bing image search through RapidAPI", // Required for image command to work
+    "rapidapiHost": "bing image search through RapidAPI" // Required for image command to work
 }
 ```
 To compile from TypeScript to javascript, open the root directory and run `tsc -p .` 
