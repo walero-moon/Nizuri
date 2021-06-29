@@ -4,6 +4,12 @@ const spotifyWebApi = require('spotify-web-api-node')
 import { getAverageColor } from 'fast-average-color-node';
 import { spotify } from './spotify'
 
+const milliToMAndS = (millis: number): string => {
+    const min = Math.floor(millis / 60000);
+    const sec = ((millis % 60000) / 1000).toFixed(0);
+    return min + ':' + (Number(sec) < 10 ? '0' : '') + sec;
+}
+
 const createSongEmbed = (song: Track, message: Message) =>  {
     // let features = await spotify.getAudioFeaturesForTrack(song.id)
     // console.log(features)
@@ -21,12 +27,12 @@ const createSongEmbed = (song: Track, message: Message) =>  {
         .setTitle(song.name)
         .setURL(song.external_urls.spotify)
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
-        .setDescription('by ' + artistNames.join(', '))
+        .setDescription('by **' + artistNames.join(', ') + '**')
         .setThumbnail(message.author.avatarURL())
         .addFields(
             { name: 'Album', value: song.album.name, inline: true },
             { name: 'Year', value: song.album.release_date, inline: true },
-            { name: 'Duration', value: song.duration_ms, inline: true },
+            { name: 'Duration', value: milliToMAndS(song.duration_ms), inline: true },
         )
         .addField('Inline field title', 'Some value here', true)
         .setImage('https://i.imgur.com/wSTFkRM.png')
