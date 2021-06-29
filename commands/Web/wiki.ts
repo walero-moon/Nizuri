@@ -1,6 +1,7 @@
 import * as Discord from 'discord.js';
 import * as fetch from 'node-fetch'
 import { errColour } from '../../config.json'
+const endpoint: string = 'https://en.wikipedia.org/w/api.php?'
 
 module.exports = {
 	name: 'wiki',
@@ -12,7 +13,6 @@ module.exports = {
     usage: "<Query>",
 	cooldown: 7,
     async execute(message: Discord.Message, args) {
-        const endpoint: string = 'https://en.wikipedia.org/w/api.php?'
         const search: string = endpoint +
             new URLSearchParams({
                 action: 'query',
