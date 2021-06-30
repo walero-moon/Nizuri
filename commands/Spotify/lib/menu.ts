@@ -31,22 +31,23 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                     title: "Page #" + String(i + 1),
                     description: `Search results for: ***${args.join(' ')}***`,
                     fields: fields
-                }).setAuthor(message.author.tag, message.author.displayAvatarURL()),
+                })
+                .setAuthor(message.author.tag, message.author.displayAvatarURL()),
                 reactions: {
                     '1️⃣': async () => {
-                        return message.channel.send(createSongEmbed(page.tracks[0], message))
+                        return createSongEmbed(page.tracks[0], message)
                     },
                     '2️⃣': async () => {
-                        return message.channel.send(createSongEmbed(page.tracks[1], message))
+                        return createSongEmbed(page.tracks[1], message)
                     },
                     '3️⃣': async () => {
-                        return message.channel.send(createSongEmbed(page.tracks[2], message))
+                        return createSongEmbed(page.tracks[2], message)
                     },
                     '4️⃣': async () => {
-                        return message.channel.send(createSongEmbed(page.tracks[3], message))
+                        return createSongEmbed(page.tracks[3], message)
                     },
                     '5️⃣': async () => {
-                        return message.channel.send(createSongEmbed(page.tracks[4], message))
+                        return createSongEmbed(page.tracks[4], message)
                     },
                     '⬅️': 'previous',
                     '➡️': 'next',
