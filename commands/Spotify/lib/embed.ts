@@ -3,38 +3,14 @@ import { getAverageColor } from 'fast-average-color-node';
 import { Track } from 'spotify-web-api-node';
 import { spotify } from './spotify'
 const spotifyWebApi = require('spotify-web-api-node')
-const keys = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
-
-const getSongKey = (keyNumber: number): string => {
-    if (typeof keyNumber != 'number') {
-        throw new TypeError
-    }
-    if (keyNumber < 0 || keyNumber > 11) {
-        throw new RangeError
-    }
-    let relativeMin = 0
-    if (keyNumber < 3) {
-        relativeMin = keyNumber + 9
-    } else {
-        relativeMin = keyNumber - 3
-    }
-    return `${keys[keyNumber]} Maj or ${keys[relativeMin]} Min`
-},
-
-const milliToMAndS = (millis: number): string => {
-    const min = Math.floor(millis / 60000);
-    const sec = ((millis % 60000) / 1000).toFixed(0);
-    return min + ':' + (Number(sec) < 10 ? '0' : '') + sec;
-}
+import {milliToMAndS, getSongKey} from './util'
 
 const createSongEmbed = async (song: Track, message: Message) => {
-    // let features = await spotify.getAudioFeaturesForTrack(song.id)
-    // console.log(features)
     let features = await spotify.getAudioFeaturesForTrack(song.id)
     let artistNames = song.artists.map(artist => artist.name)
-    let color = await (await getAverageColor(song.album.images[0].url)).value.slice(0, 3)
+    let color = (await getAverageColor(song.album.images[0].url)).value.slice(0, 3)
     const songEmbed = new MessageEmbed()
-        .setColor(color)
+        .setColor([color[0], color[1], color[2]])
         .setTitle(song.name)
         .setURL(song.external_urls.spotify)
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
