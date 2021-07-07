@@ -11,6 +11,8 @@ create a JSON file named `config.json`, that will contain the token and the pref
     "successColour": "#5cff5f",
     "rapidapiKey": "bing image search through RapidAPI", // Required for image command to work
     "rapidapiHost": "bing image search through RapidAPI" // Required for image command to work
+    "clientID" : "From Spotify Developer Dashboard", // Required for Spotify commands
+    "clientSecret": "From Spotify Developer Dashboard", //Required for Spotify commands
 }
 ```
 To compile from TypeScript to javascript, open the root directory and run `tsc -p .` 

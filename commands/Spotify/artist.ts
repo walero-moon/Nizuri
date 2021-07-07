@@ -45,7 +45,6 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
                 .setTitle(artist.name)
-                .setFooter(`Results for "${args.join(' ')}"`)
                 .setDescription(' ')
                 .setImage(artistImage)
                 .addField('Popularity', artist.popularity, true)
