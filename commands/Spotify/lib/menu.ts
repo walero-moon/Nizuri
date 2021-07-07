@@ -5,7 +5,7 @@ import { createSongEmbed } from './embed'
 
 const menuButtons = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
-const generatePagesFromTracks = (pages, message: Message, args) => {
+const generatePagesFromTracks = (pages, size: number, message: Message, args) => {
     return pages.map((page, i: number) => {
         let fields = page.tracks.map((track, trackId) => {
             return {
@@ -32,7 +32,7 @@ const generatePagesFromTracks = (pages, message: Message, args) => {
                     description: `Search results for: ***${args.join(' ')}***`,
                     fields: fields
                 })
-                .setAuthor(message.author.tag, message.author.displayAvatarURL()),
+                    .setAuthor(message.author.tag, message.author.displayAvatarURL()),
                 reactions: {
                     '1️⃣': async () => {
                         return createSongEmbed(page.tracks[0], message)
@@ -65,7 +65,7 @@ const generateSongSearchMenu = (search: Search, size: number, message: Message, 
         pages[n] = { tracks: search.body.tracks.items.slice(i, i + size) }
     }
     //console.log(JSON.stringify(pages))
-    pages = generatePagesFromTracks(pages, message, args)
+    pages = generatePagesFromTracks(pages, 5, message, args)
     return new Menu(message.channel, message.author.id, pages.map(page => page.page))
 }
 export { generateSongSearchMenu, generatePagesFromTracks }
