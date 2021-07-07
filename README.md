@@ -53,5 +53,22 @@ Rolls the desired amount of die and then performs the appropriate calculations.
 > :------------------:|:--------------------:
 > ![image](https://user-images.githubusercontent.com/61264517/123117050-cd61b100-d417-11eb-8983-1625518219a5.png) | ![image](https://user-images.githubusercontent.com/61264517/123116623-7065fb00-d417-11eb-94a5-c3270abb8408.png)
 
+<br/>
+
+### Spotify
+
+```,artist <search>```
+
+Searches spotify for artists matching a search, and displays the results in pages
+
+![image](https://user-images.githubusercontent.com/4352706/124688088-09225f00-de8b-11eb-88ba-2ff7c371c487.png)
+
 
 <br/>
+
+```,song <search>```
+
+Searches spotify for songs matching a search, and displays the results in a pageinated menu
+
+![image](https://user-images.githubusercontent.com/4352706/124688338-70401380-de8b-11eb-88ef-0b7f70134b05.png)
+
