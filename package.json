@@ -5,7 +5,7 @@
     "watch": "tsc -w -p .",
     "build": "tsc -p .",
     "start": "cd ./dist & nodemon ./index.js",
-    "deploy": "cd ./dist & node ./index.js"
+    "deploy": "cd ./dist && node ./index.js"
   },
   "dependencies": {
     "@types/js-quantities": "^1.6.2",
