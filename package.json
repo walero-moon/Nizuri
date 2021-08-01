@@ -2,8 +2,9 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
-    "watch": "tsc -w -p .",
-    "start": "cd dist & nodemon ./index.js"
+    "build": "tsc -p .",
+    "start": "cd dist & nodemon ./index.js",
+    "deploy": "cd dist & node ./index.js"
   },
   "dependencies": {
     "@types/js-quantities": "^1.6.2",
@@ -16,6 +17,7 @@
     "unirest": "^0.6.0"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2"
+    "@types/node": "^15.12.2",
+    "typescript": "^4.3.5"
   }
 }
