@@ -2,6 +2,7 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
+    "watch": "tsc -w -p .",
     "build": "tsc -p .",
     "start": "cd dist & nodemon ./index.js",
     "deploy": "cd dist & node ./index.js"
