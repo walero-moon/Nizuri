@@ -7,6 +7,6 @@ module.exports = {
 	cooldown: 5,
     execute(message, args) {
         const api = Math.round(message.client.ws.ping)
-        message.channel.send(`Pong! (${api}ms)`)
+        message.channel.send(`Pong! (${api}ms), Ping command changed!`)
 	},
 };
