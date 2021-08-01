@@ -12,6 +12,7 @@
     "js-quantities": "^1.7.6",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12",
     "unirest": "^0.6.0"
   },
   "devDependencies": {

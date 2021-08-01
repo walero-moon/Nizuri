@@ -10,7 +10,7 @@ declare module "discord.js" {
         name: string,
         description: string,
         aliases: string[],
-        args: string[],
+        args: boolean,
         usage: string,
         guildOnly: boolean,
         category: string,
