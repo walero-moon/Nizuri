@@ -1,8 +1,8 @@
-import { Message } from "discord.js";
+import { Message, Collection } from "discord.js";
 
 declare module "discord.js" {
     export interface Client {
-        commands: Collection<unknown, Command>,
+        commands: Collection<unknown, unknown>,
         cooldowns: Collection<unknown, unknown>
     }
 
@@ -17,22 +17,23 @@ declare module "discord.js" {
         visible: boolean,
         cooldown: number,
         permissions: any,
-        execute: (message: Message, args: string[]) => any // Can be `Promise<SomeType>` if using async
-    }
-
-    export interface Message {
-        channel: TextChannel | DMChannel | NewsChannel
-    }
-
-    export interface GuildChannel {
-        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
-    }
-
-    export interface DMChannel {
-        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
-    }
-
-    export interface NewsChannel {
-        permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+        execute: (interaction: CommandInteraction) => any // Can be `Promise<SomeType>` if using async
     }
 }
+
+//     export interface Message {
+//         channel: TextChannel | DMChannel | NewsChannel
+//     }
+
+//     export interface GuildChannel {
+//         permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+//     }
+
+//     export interface DMChannel {
+//         permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+//     }
+
+//     export interface NewsChannel {
+//         permissionsFor: (memberOrRole: string | Message | GuildMember | User | Role) => Readonly<Permissions>
+//     }
+// }
