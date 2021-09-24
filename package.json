@@ -8,17 +8,18 @@
     "strt": "cd ./dist && nodemon ./index.js"
   },
   "dependencies": {
-    "@types/js-quantities": "^1.6.2",
     "discord.js": "12.5.3",
-    "discord.js-pagination": "^1.0.3",
+    "discord.js-pagination": "1.0.3",
     "js-quantities": "^1.7.6",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.12",
     "unirest": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.3",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12",
+    "@types/js-quantities": "^1.6.2"
   }
 }

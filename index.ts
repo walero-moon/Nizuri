@@ -1,8 +1,10 @@
 // All this code was literally taken from https://discordjs.guide/
 
 import * as fs from 'fs';
-import { prefix, token } from './config.json';
+import { prefix } from './config.json';
 import * as Discord from 'discord.js'
+
+console.log(process.env.TOKEN)
 
 const call: string = process.env.PREFIX || prefix 
 
@@ -110,5 +112,4 @@ client.on('message', (message) => {
         console.log(error);
     }
 })
-
-client.login(process.env.TOKEN || token);
+client.login(process.env.TOKEN);

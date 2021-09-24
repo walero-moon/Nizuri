@@ -2,7 +2,6 @@ import * as Discord from 'discord.js';
 import * as pagination from 'discord.js-pagination';
 import * as unirest from 'unirest';
 import { errColour } from '../../config.json';
-import { rapidapiKey, rapidapiHost } from '../../config.json';
 
 const emoji: string[] = ['⏪', '⏩']
 const timeout: string = '60000'
@@ -25,8 +24,8 @@ module.exports = {
             "q": query
         });
         req.headers({
-            "x-rapidapi-key": process.env.RAPIDKEY || rapidapiKey,
-	        "x-rapidapi-host": process.env.RAPIDHOST || rapidapiHost,
+            "x-rapidapi-key": process.env.RAPIDKEY,
+	        "x-rapidapi-host": process.env.RAPIDHOST,
 	        "useQueryString": true
         });
         req.end((res) => {
