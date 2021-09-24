@@ -25,8 +25,8 @@ module.exports = {
             "q": query
         });
         req.headers({
-            "x-rapidapi-key": rapidapiKey,
-	        "x-rapidapi-host": rapidapiHost,
+            "x-rapidapi-key": process.env.RAPIDKEY || rapidapiKey,
+	        "x-rapidapi-host": process.env.RAPIDHOST || rapidapiHost,
 	        "useQueryString": true
         });
         req.end((res) => {

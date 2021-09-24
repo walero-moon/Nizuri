@@ -8,7 +8,7 @@ const endpoint: string = "https://free.currconv.com/api/v7/convert?"
 async function makeRequest(fromCurrency: string, toCurrency: string) {
     const search: string = endpoint + 
         new URLSearchParams({
-            apiKey: currconv,
+            apiKey: process.env.CURRCONV || currconv,
             q: `${fromCurrency}_${toCurrency}`,
             compact: 'y'
         })

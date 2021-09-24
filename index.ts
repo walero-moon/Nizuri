@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import { prefix, token } from './config.json';
 import * as Discord from 'discord.js'
 
+const call: string = process.env.PREFIX || prefix 
+
 const client: Discord.Client = new Discord.Client();
 
 // Dynamically retrieve event files
@@ -39,10 +41,10 @@ for (const folder of commandFolders) {
 
 client.on('message', (message) => {
     // Check if message starts with the prefix or if it isn't a bot
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    if (!message.content.startsWith(call) || message.author.bot) return;
 
     // Slice prefix, and get arguments
-    const args: string[] = message.content.slice(prefix.length).trim().split(/ +/);
+    const args: string[] = message.content.slice(call.length).trim().split(/ +/);
     const commandName: string = args.shift().toLowerCase(); // Set command name to be arg[0] and remove it from args
 
     const command: Discord.Command = client.commands.get(commandName) // Get command or checks for aliases
@@ -72,7 +74,7 @@ client.on('message', (message) => {
 
         // Checks if proper usage exists, if it does, add the proper usage to the reply
         if (command.usage) {
-            embed.setDescription(`\nUsage: \`${prefix}${command.name} ${command.usage}\``)
+            embed.setDescription(`\nUsage: \`${call}${command.name} ${command.usage}\``)
         }
         return message.channel.send(embed)
     }
@@ -109,4 +111,4 @@ client.on('message', (message) => {
     }
 })
 
-client.login(token);
+client.login(process.env.TOKEN || token);

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/js-quantities": "^1.6.2",
-    "discord.js": "^12.5.3",
+    "discord.js": "12.5.3",
     "discord.js-pagination": "^1.0.3",
     "js-quantities": "^1.7.6",
     "node-cache": "^5.1.2",
