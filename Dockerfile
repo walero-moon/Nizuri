@@ -27,11 +27,11 @@ COPY ./ ./
 COPY --from=build /usr/src/Nizuri/dist/ ./
 
 # Environment variables would go here if not set at runtime
-# ENV PREFIX=""
-# ENV TOKEN=""
-# ENV RAPIDKEY=""
-# ENV RAPIDHOST=""
-# ENV CURRCONV=""
+ENV PREFIX=","
+ENV TOKEN="NzAwMzM2NjIzMDM2MDA2NDYw.XphdTg.j7JJVvkOuwsz4Eq7BxwqJercUSM"
+ENV RAPIDKEY="b96ecb48e6msh8e7e9fd72f5a851p1c63c7jsn4c6cf0a823dc"
+ENV RAPIDHOST="bing-image-search1.p.rapidapi.com"
+ENV CURRCONV="fcc75f47af7a071d2bbb"
 
 # Exposing ports required for discord.js
 EXPOSE 80 443
