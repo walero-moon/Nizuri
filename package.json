@@ -1,25 +1,21 @@
 {
-  "version": "0.0.1",
-  "main": "./dist/index.js",
-  "scripts": {
-    "watch": "tsc -w -p .",
-    "build": "tsc -p .",
-    "start": "cd ./dist && node ./index.js",
-    "strt": "cd ./dist && nodemon ./index.js"
-  },
   "dependencies": {
-    "discord.js": "12.5.3",
-    "discord.js-pagination": "1.0.3",
-    "js-quantities": "^1.7.6",
-    "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.1",
-    "unirest": "^0.6.0"
+    "discord.js": "^14.4.0"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2",
-    "typescript": "^4.4.3",
-    "dotenv": "^10.0.0",
-    "nodemon": "^2.0.12",
-    "@types/js-quantities": "^1.6.2"
-  }
+    "@types/node": "^18.7.21",
+    "nodemon": "^2.0.20",
+    "run-script": "^0.1.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.3"
+  },
+  "scripts": {
+    "watch": "tsc -w -p .",
+    "strt":  "nodemon out/index.js",
+    "start": "tsc && node out/index.js",
+    "build": "tsc",
+    "push": "cd dist && node ./deploy-commands.js"
+  },
+  "type": "commonjs"
 }

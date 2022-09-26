@@ -1,21 +1,22 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "outDir": "./dist",
-        "allowJs": true,
-        "checkJs": true,
-        "moduleResolution": "node",
-        "module": "commonjs",
-        "resolveJsonModule": true,
-        "pretty": true
-    },
-    "include": [
-        "config.js",
-        "index.ts",
-        "./commands",
-        "commands/**/**/*",
-        "./commands/",
-        "discord.d.ts",
-        "./events"
-    ]
+  "compilerOptions": {
+    "outDir": "./out",
+    "target": "ES2015",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  
+  "include": ["/**/*", "**/*.ts"],
+  "exclude": [
+      "node_modules",
+      "dist",
+      ".vscode"
+  ],
+
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Recommended"
 }

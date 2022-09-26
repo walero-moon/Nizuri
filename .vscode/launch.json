@@ -1,11 +1,15 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Docker Node.js Launch",
-            "type": "docker",
+            "type": "node",
             "request": "launch",
-            "preLaunchTask": "docker-run: debug",
-            "platform": "node"
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/src/push-commands.ts",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ]
         }
     ]
 }
