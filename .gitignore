@@ -1,5 +1,6 @@
 node_modules
 ./package_lock.json
 ./config.json
+config.json
 .vscode
 out
