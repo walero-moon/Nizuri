@@ -15,7 +15,8 @@
     "strt":  "nodemon out/index.js",
     "start": "tsc && node out/index.js",
     "build": "tsc",
-    "push": "cd dist && node ./deploy-commands.js"
+    "push": "node ./out/push-commands.js",
+    "delete": "node ./out/delete-commands.js"
   },
   "type": "commonjs"
 }
