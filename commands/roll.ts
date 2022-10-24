@@ -35,7 +35,7 @@ const data =  new SlashCommandBuilder()
         )
         .addBooleanOption((option: SlashCommandBooleanOption) => 
             option.setName("ephemeral")
-                    .setDescription("Whether to hide response from other users or not. Defaults to false.")
+                .setDescription("Whether to hide response from other users or not. Defaults to false.")
         );
 
 const execute = async (interaction: ChatInputCommandInteraction ) => {
