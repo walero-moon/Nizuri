@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "discord.js": "^14.4.0",
-    "n": "^9.0.0"
+    "mongodb": "^4.12.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.22",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^18.11.14",
     "nodemon": "^2.0.20",
     "run-script": "^0.1.1",
     "ts-node": "^10.9.1",
